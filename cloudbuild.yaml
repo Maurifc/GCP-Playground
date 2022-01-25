@@ -1,0 +1,16 @@
+steps:
+  - id: 'build'
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker build -t gcr.io/$PROJECT_ID/hello:${BRANCH_NAME}-${SHORT_SHA} .
+
+  - id: 'publish'
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: 
+      - '-c'
+      - |
+          docker push gcr.io/$PROJECT_ID/hello:${BRANCH_NAME}-${SHORT_SHA}
