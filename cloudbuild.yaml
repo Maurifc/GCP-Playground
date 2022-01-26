@@ -14,4 +14,4 @@ steps:
     args: 
       - '-c'
       - |
-          docker push -a gcr.io/$PROJECT_ID/hello:${BRANCH_NAME}-${SHORT_SHA} 
+          docker push gcr.io/$PROJECT_ID/hello:${BRANCH_NAME}-${SHORT_SHA} -a
