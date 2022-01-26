@@ -33,3 +33,6 @@ steps:
 substitutions:
   _IMAGE_NAME: gcr.io/${PROJECT_ID}/hello
   _IMAGE_TAG: ${TAG_NAME}
+
+images:
+  - ${_IMAGE_NAME}:${_IMAGE_TAG}
