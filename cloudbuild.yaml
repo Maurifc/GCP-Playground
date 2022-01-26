@@ -26,11 +26,13 @@ steps:
     args:
     - run
     - --filename=k8s
-    - --location=us-east1-b
-    - --cluster=temp-c
+    - --location=${_LOCATION}
+    - --cluster=${_CLUSTER}
     - --image=${_IMAGE_NAME}:${_IMAGE_TAG}
 
 substitutions:
+  _LOCATION: us-east1-b
+  _CLUSTER: temp-c
   _IMAGE_NAME: gcr.io/${PROJECT_ID}/hello
   _IMAGE_TAG: ${TAG_NAME}
 
