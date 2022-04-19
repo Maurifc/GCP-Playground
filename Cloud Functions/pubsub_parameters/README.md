@@ -37,7 +37,8 @@ $ gcloud functions logs read parameters
 
 ```
 
-### Delete function
+### Delete resources
 ```bash
 gcloud functions delete parameters 
+gcloud pubsub topics delete parameters-topic
 ```
