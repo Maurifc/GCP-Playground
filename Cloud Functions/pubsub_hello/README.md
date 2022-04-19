@@ -15,10 +15,6 @@ gcloud pubsub topics create unixtopic
 
 ### Deploy
 ```bash
-cd hello
-```
-
-```bash
 gcloud functions deploy hello \
         --runtime nodejs16 \
         --trigger-topic unixtopic \
