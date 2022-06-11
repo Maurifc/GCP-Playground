@@ -1,0 +1,23 @@
+steps:
+  - name: 'google/cloud-sdk:alpine'
+    args:
+      - source
+      - repos
+      - clone
+      - $_HELM_REPOSITORY
+    id: Clone repository
+    entrypoint: gcloud
+  - name: 'google/cloud-sdk:alpine'
+    args:
+      - '-c'
+      - |
+        cd alucard
+        sed -i "s/tag: [a-z0-9]\{40\}/tag: ${$COMMIT_SHA}/" values.yaml
+        git config --global user.email "cloudbuild@google.com"
+        git config --global user.name "CloudBuild"
+        git commit -am "SED Test"
+        git push
+    id: Replace image tag and commit
+    entrypoint: /bin/sh
+substitutions:
+  _HELM_REPOSITORY: alucard
